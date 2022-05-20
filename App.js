@@ -51,9 +51,9 @@ app.put("/:id", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-app.delete("/:idToRemove", (req, res) => {
-    pool
-        .query("delete FROM users where id=$1", [req.params.idToRemove])
+    app.delete("/:idToRemove", (req, res) => {
+        pool
+            .query("delete FROM users where id=$1", [req.params.idToRemove])
         .then((result) => res.send(result))
         .catch((err) => console.log(err));
 });
@@ -62,7 +62,7 @@ app.get("/orders", (req, res) => {
     pool
         .query("SELECT * FROM orders;")
         .then((result) => res.json(result.rows))
-        .catch((e) => console.error(e.stack));;
+        .catch((e) => console.error(err));;
 });
 
 app.listen(port, () => {
